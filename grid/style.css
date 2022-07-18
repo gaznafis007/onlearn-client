@@ -1,0 +1,95 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root{
+    --bg: cyan;
+    --bg-2: aquamarine;
+    --grid-bg: #dadada
+}
+header{
+    width: 100%;
+    font-family: nunito;
+    background-color: var(--bg);
+}
+nav{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+}
+.nav-bar >ul{
+    margin-right: 50px;
+    list-style-type: none;
+    display: flex;
+}
+.nav-bar .nav > li{
+    display: inline-block;
+    padding: 10px 15px
+}
+.nav-bar .nav > li > a{
+    color: midnightblue;
+    text-decoration: none;
+}
+.dropdown{
+    display: none;
+    position: absolute;
+    background-color: var(--bg-2);
+    list-style-type: none;
+}
+.dropdown > li > a{
+    text-decoration: none;
+    display: inline-block;
+    padding: 10px;
+}
+.nav-bar > ul > li:nth-child(3):hover .dropdown{
+    display: block;
+}
+.wrapper{
+    width: 100%;
+    overflow: hidden;
+    height: 65vh;
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(3, 33%);
+}
+.section{
+    background-color: var(--grid-bg);
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    border-radius: 3px;
+}
+.section-1, .section-3{
+    grid-row: 1/3;
+}
+.section-2{
+    grid-row: 1/2;
+}
+.section-4{
+    grid-row: 2/3;
+}
+.section-5{
+    grid-column: 1/4;
+}
+.section-6{
+    grid-column: 1/3;
+}
+.section-7{
+    grid-column: 3/4;
+}
+table{
+    margin-top: 20px;
+    width: 50%;
+}
+table, th, td{
+    border: 1px solid #ddd;
+    border-collapse: collapse;
+}
+tr:nth-child(even){
+    background-color: #dadada;
+}
+th, td{
+    padding: 15px 20px;
+    text-align: center;
+}

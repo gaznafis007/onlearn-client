@@ -1,0 +1,14 @@
+.box{
+    width: 200px;
+    height: 200px;
+    border: 1px solid cadetblue;
+    background-color: coral;
+    transition-duration: 3s;
+}
+.box:hover{
+    width: 400px;
+    height: 100px;
+    background-color: cadetblue;
+    border: 1px solid coral;
+}
+/* transition, transition-property, transition-delay, transition-duration, transition-timing-function */
