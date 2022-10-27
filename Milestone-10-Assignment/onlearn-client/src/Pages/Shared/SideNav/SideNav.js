@@ -1,9 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
+import { useEffect } from "react";
+import ListGroup from "react-bootstrap/ListGroup";
+import { NavLink } from "react-router-dom";
 
 const SideNav = () => {
+  const [categories, setCategories] = useState([]);
+  useEffect(() => {
+    fetch("http://localhost:5000/datas/categories")
+      .then((res) => res.json())
+      .then((data) => setCategories(data));
+  }, []);
   return (
     <div>
-      <h2>this is side nav</h2>
+      <ListGroup as="ul">
+        {categories.map((category) => (
+          <ListGroup.Item key={category.id} as="li">
+            <NavLink
+              to={`/courses/categories/${category.name}`}
+              className="p-3 text-decoration-none capitalize"
+            >
+              {category.name}
+            </NavLink>
+          </ListGroup.Item>
+        ))}
+      </ListGroup>
     </div>
   );
 };

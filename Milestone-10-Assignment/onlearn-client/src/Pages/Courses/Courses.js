@@ -8,14 +8,15 @@ const Courses = () => {
   const courses = useLoaderData();
   return (
     <div className="d-flex">
-      <div className="w-25">
+      <div className="w-25 mt-2 px-2">
         <SideNav></SideNav>
       </div>
       <div className="w-75">
         <Row className="mx-auto">
-          {courses.map((course) => (
+          {/* {courses.map((course) => (
             <CourseCard key={course.id} course={course}></CourseCard>
-          ))}
+          ))} */}
+          <Outlet></Outlet>
         </Row>
       </div>
     </div>
