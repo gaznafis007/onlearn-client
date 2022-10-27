@@ -2,7 +2,7 @@ import React from "react";
 import { Col } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
 import Aos from "aos";
@@ -11,6 +11,7 @@ const CourseCard = ({ course }) => {
   useEffect(() => {
     Aos.init();
   }, []);
+  const navigate = useNavigate();
   const {
     id,
     category,
@@ -21,10 +22,13 @@ const CourseCard = ({ course }) => {
     mentor,
     course_details,
   } = course;
+  const handleEnroll = () => {
+    navigate(`/courses/${id}`);
+  };
   return (
     <>
       <Col lg="3" md="6" className="my-2">
-        <Card data-aos="zoom-in">
+        <Card data-aos="zoom-in" data-aos-duration="1500">
           <Card.Img variant="top" src={course_img} />
           <Card.Body>
             <Card.Title>{name}</Card.Title>
@@ -38,7 +42,9 @@ const CourseCard = ({ course }) => {
                 course_details
               )}
             </Card.Text>
-            <Button variant="primary">Go somewhere</Button>
+            <Button variant="primary" onClick={handleEnroll}>
+              Enroll Now
+            </Button>
           </Card.Body>
         </Card>
       </Col>

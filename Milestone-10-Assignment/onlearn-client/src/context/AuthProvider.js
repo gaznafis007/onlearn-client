@@ -21,15 +21,19 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const userSignUp = (email, password) => {
+    setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
   const userSignIn = (email, password) => {
+    setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
   const googleSignIn = (googleProvider) => {
+    setLoading(true);
     return signInWithPopup(auth, googleProvider);
   };
   const facebookSignIn = (facebookProvider) => {
+    setLoading(true);
     return signInWithPopup(auth, facebookProvider);
   };
   const getProfile = (name, imgURL) => {
@@ -56,12 +60,15 @@ const AuthProvider = ({ children }) => {
   };
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      if ((currentUser = null || currentUser.emailVerified)) {
+      if (user === null) {
         setUser(currentUser);
         setLoading(false);
+      }
+      if (currentUser.emailVerified) {
+        setUser(currentUser);
+        console.log(currentUser);
+        setLoading(false);
         toast.success("Successfully Login");
-      } else {
-        toast.error("Email is not verified");
       }
     });
     return () => {

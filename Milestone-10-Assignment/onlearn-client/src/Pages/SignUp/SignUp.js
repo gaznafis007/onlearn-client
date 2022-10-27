@@ -30,7 +30,7 @@ const SignUp = () => {
     const photoURL = form.img.value;
     const email = form.email.value;
     const password = form.password.value;
-    const regex = /^[a-zA-Z0-9]$/;
+    const regex = /[a-z]*[A-Z]*[0-9]/;
     if (password.length < 8) {
       toast.error("Password must be atleast 8 characters");
     } else if (!regex.test(password)) {
@@ -61,6 +61,7 @@ const SignUp = () => {
     googleSignIn(googleProvider)
       .then((res) => {
         const user = res.user;
+        console.log(user);
         navigate("/");
       })
       .catch((error) => {
