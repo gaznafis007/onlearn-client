@@ -3,8 +3,14 @@ import { Col } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
+import Aos from "aos";
 
 const CourseCard = ({ course }) => {
+  useEffect(() => {
+    Aos.init();
+  }, []);
   const {
     id,
     category,
@@ -18,7 +24,7 @@ const CourseCard = ({ course }) => {
   return (
     <>
       <Col lg="3" md="6" className="my-2">
-        <Card>
+        <Card data-aos="zoom-in">
           <Card.Img variant="top" src={course_img} />
           <Card.Body>
             <Card.Title>{name}</Card.Title>
