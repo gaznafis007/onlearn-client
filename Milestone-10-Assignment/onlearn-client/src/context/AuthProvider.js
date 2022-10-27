@@ -6,11 +6,7 @@ import { app } from "../Firebase/firebase.config";
 const AuthProvider = ({ children }) => {
   const auth = getAuth(app);
   const AuthContext = createContext();
-  return (
-    <div>
-      <AuthContext.Provider>{children}</AuthContext.Provider>
-    </div>
-  );
+  return <AuthContext.Provider>{children}</AuthContext.Provider>;
 };
 
 export default AuthProvider;
