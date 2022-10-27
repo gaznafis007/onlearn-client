@@ -4,6 +4,7 @@ import {
   createUserWithEmailAndPassword,
   getAuth,
   onAuthStateChanged,
+  sendEmailVerification,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
@@ -12,6 +13,7 @@ import {
 import { app } from "../Firebase/firebase.config";
 import { useState } from "react";
 import { useEffect } from "react";
+import toast from "react-hot-toast";
 
 export const AuthContext = createContext();
 const AuthProvider = ({ children }) => {
@@ -36,6 +38,9 @@ const AuthProvider = ({ children }) => {
       photoURL: imgURL,
     });
   };
+  const verifyEmail = () => {
+    return sendEmailVerification(auth.currentUser);
+  };
   const logOut = () => {
     return signOut(auth);
   };
@@ -46,12 +51,18 @@ const AuthProvider = ({ children }) => {
     googleSignIn,
     facebookSignIn,
     getProfile,
+    verifyEmail,
     logOut,
   };
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-      setLoading(false);
+      if (currentUser.emailVerified) {
+        setUser(currentUser);
+        setLoading(false);
+        toast.success("Successfully Login");
+      } else {
+        toast.error("Email is not verified");
+      }
     });
     return () => {
       unsubscribe();

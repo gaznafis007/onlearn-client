@@ -5,6 +5,7 @@ import { useContext } from "react";
 import { Card, Col, Row } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import toast from "react-hot-toast";
 import { FaFacebook, FaGoogle } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider";
@@ -12,8 +13,14 @@ import { AuthContext } from "../../context/AuthProvider";
 const SignUp = () => {
   const navigate = useNavigate();
   const [error, setError] = useState({});
-  const { googleSignIn, facebookSignIn, userSignUp, getProfile, logOut } =
-    useContext(AuthContext);
+  const {
+    googleSignIn,
+    facebookSignIn,
+    userSignUp,
+    getProfile,
+    verifyEmail,
+    logOut,
+  } = useContext(AuthContext);
   const googleProvider = new GoogleAuthProvider();
   const facebookProvider = new FacebookAuthProvider();
   const handleSignUp = (event) => {
@@ -28,8 +35,15 @@ const SignUp = () => {
         const user = res.user;
         console.log(user);
         getProfile(displaName, photoURL);
-        logOut();
-        navigate("/login");
+        verifyEmail();
+        if (user.emailVerified) {
+          logOut();
+          navigate("/");
+        } else {
+          toast.caller(
+            "Please verify your email check email at inbox or spam folder"
+          );
+        }
       })
       .catch((error) => {
         console.log(error.message);
