@@ -23,7 +23,7 @@ export const router = createBrowserRouter([
       {
         path: "/courses",
         element: <Courses></Courses>,
-        loader: () => fetch("http://localhost:5000/datas"),
+        loader: () => fetch("https://onlearn-server.vercel.app/datas"),
         children: [
           {
             path: "/courses",
@@ -33,7 +33,9 @@ export const router = createBrowserRouter([
             path: "/courses/categories/:name",
             element: <CategoryCourses></CategoryCourses>,
             loader: ({ params }) =>
-              fetch(`http://localhost:5000/datas/categories/${params.name}`),
+              fetch(
+                `https://onlearn-server.vercel.app/datas/categories/${params.name}`
+              ),
           },
         ],
       },
@@ -45,7 +47,7 @@ export const router = createBrowserRouter([
           </ProtectedRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/datas/${params.id}`),
+          fetch(`https://onlearn-server.vercel.app/datas/${params.id}`),
       },
       {
         path: "/blog",

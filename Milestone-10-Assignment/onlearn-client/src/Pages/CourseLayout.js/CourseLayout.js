@@ -7,7 +7,7 @@ import CourseCard from "../CourseCard/CourseCard";
 const CourseLayout = () => {
   const [courses, setCourses] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/datas")
+    fetch("https://onlearn-server.vercel.app/datas")
       .then((res) => res.json())
       .then((data) => setCourses(data));
   }, []);

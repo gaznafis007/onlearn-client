@@ -6,7 +6,7 @@ import { NavLink } from "react-router-dom";
 const SideNav = () => {
   const [categories, setCategories] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/datas/categories")
+    fetch("https://onlearn-server.vercel.app/datas/categories")
       .then((res) => res.json())
       .then((data) => setCategories(data));
   }, []);

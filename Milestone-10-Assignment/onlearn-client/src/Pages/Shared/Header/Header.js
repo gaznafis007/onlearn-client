@@ -37,7 +37,6 @@ const Header = () => {
                 ? " text-white text-decoration-none"
                 : " text-dark text-decoration-none"
             }
-            to="/courses"
             style={{ fontSize: "20px" }}
           >
             onLearn
