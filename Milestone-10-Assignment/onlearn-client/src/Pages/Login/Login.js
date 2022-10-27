@@ -3,6 +3,7 @@ import { Card, Col, Row } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { FaFacebook, FaGoogle } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   return (
@@ -27,7 +28,9 @@ const Login = () => {
                 <Form.Control type="password" placeholder="Password" />
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                <Form.Check type="checkbox" label="Check me out" />
+                <Form.Text>
+                  New to our site? Please <Link to="/signup">Sign up</Link>
+                </Form.Text>
               </Form.Group>
 
               <Button
