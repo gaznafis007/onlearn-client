@@ -1,4 +1,8 @@
-# Getting Started with Create React App
+# onLearn Learning App
+
+**Facebook,Google,email authentication
+**Single page App
+\*\*Deploy at firebase withe a vercel server
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
