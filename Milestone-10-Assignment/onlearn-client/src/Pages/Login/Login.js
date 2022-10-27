@@ -1,11 +1,43 @@
+import { FacebookAuthProvider, GoogleAuthProvider } from "firebase/auth";
 import React from "react";
+import { useState } from "react";
+import { useContext } from "react";
 import { Card, Col, Row } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { FaFacebook, FaGoogle } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/AuthProvider";
 
 const Login = () => {
+  const [error, setError] = useState({});
+  const { googleSignIn, facebookSignIn } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const googleProvider = new GoogleAuthProvider();
+  const facebookProvider = new FacebookAuthProvider();
+  const handleGoogleSignIn = () => {
+    googleSignIn(googleProvider)
+      .then((res) => {
+        const user = res.user;
+        console.log(user);
+        navigate("/");
+      })
+      .catch((error) => {
+        setError(error);
+        console.log(error);
+      });
+  };
+  const handleFacebookSignIn = () => {
+    facebookSignIn(facebookProvider)
+      .then((res) => {
+        const user = res.user;
+        console.log(user);
+        navigate("/");
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
   return (
     <Row>
       <Col lg="8" md="10" className="mx-auto">
@@ -41,12 +73,20 @@ const Login = () => {
                 Login
               </Button>
               <p className="text-center">or</p>
-              <div className="btn d-block btn-outline-success text-center mx-auto my-2">
+              <Button
+                onClick={handleGoogleSignIn}
+                className=" d-block text-center mx-auto my-2"
+                variant="outline-success"
+              >
                 <FaGoogle /> Sign in with Google
-              </div>
-              <div className="btn d-block btn-outline-primary text-center mx-auto my-2">
+              </Button>
+              <Button
+                onClick={handleFacebookSignIn}
+                className="d-block text-center mx-auto my-2"
+                variant="outline-primary"
+              >
                 <FaFacebook /> Sign in with Facebook
-              </div>
+              </Button>
             </Form>
           </Card.Body>
         </Card>

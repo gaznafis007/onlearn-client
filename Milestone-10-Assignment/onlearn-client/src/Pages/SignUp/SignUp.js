@@ -1,11 +1,40 @@
+import { FacebookAuthProvider, GoogleAuthProvider } from "firebase/auth";
 import React from "react";
+import { useState } from "react";
+import { useContext } from "react";
 import { Card, Col, Row } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { FaFacebook, FaGoogle } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/AuthProvider";
 
 const SignUp = () => {
+  const navigate = useNavigate();
+  const [error, setError] = useState({});
+  const { googleSignIn, facebookSignIn } = useContext(AuthContext);
+  const googleProvider = new GoogleAuthProvider();
+  const facebookProvider = new FacebookAuthProvider();
+  const handleGoogleSignIn = () => {
+    googleSignIn(googleProvider)
+      .then((res) => {
+        const user = res.user;
+        navigate("/");
+      })
+      .catch((error) => {
+        setError(error);
+      });
+  };
+  const handleFacebookSignIn = () => {
+    facebookSignIn(facebookProvider)
+      .then((res) => {
+        const user = res.user;
+        navigate("/");
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  };
   return (
     <Row>
       <Col lg="8" md="10" className="mx-auto">
@@ -15,11 +44,11 @@ const SignUp = () => {
           </Card.Title>
           <Card.Body>
             <Form>
-              <Form.Group className="mb-3" controlId="formBasicEmail">
+              <Form.Group className="mb-3" controlId="formName">
                 <Form.Label>Your Name</Form.Label>
                 <Form.Control type="name" placeholder="Enter your name" />
               </Form.Group>
-              <Form.Group className="mb-3" controlId="formBasicEmail">
+              <Form.Group className="mb-3" controlId="formEmail">
                 <Form.Label>Email address</Form.Label>
                 <Form.Control type="email" placeholder="Enter email" />
                 <Form.Text className="text-muted">
@@ -27,7 +56,7 @@ const SignUp = () => {
                 </Form.Text>
               </Form.Group>
 
-              <Form.Group className="mb-3" controlId="formBasicPassword">
+              <Form.Group className="mb-3" controlId="formPassword">
                 <Form.Label>Password</Form.Label>
                 <Form.Control type="password" placeholder="Password" />
               </Form.Group>
@@ -39,6 +68,7 @@ const SignUp = () => {
                   Already have an account? Please <Link to="/login">Login</Link>
                 </Form.Text>
               </Form.Group>
+              {error ? <p>{error.message}</p> : ""}
               <Button
                 size="md"
                 className="btn d-block text-center mx-auto"
@@ -47,12 +77,20 @@ const SignUp = () => {
                 Sign up
               </Button>
               <p className="text-center">or</p>
-              <div className="btn d-block btn-outline-success text-center mx-auto my-2">
+              <Button
+                onClick={handleGoogleSignIn}
+                className="btn d-block  text-center mx-auto my-2"
+                variant="outline-success"
+              >
                 <FaGoogle /> Sign in with Google
-              </div>
-              <div className="btn d-block btn-outline-primary text-center mx-auto my-2">
+              </Button>
+              <Button
+                onClick={handleFacebookSignIn}
+                className="btn d-block  text-center mx-auto my-2"
+                variant="outline-primary"
+              >
                 <FaFacebook /> Sign in with Facebook
-              </div>
+              </Button>
             </Form>
           </Card.Body>
         </Card>
