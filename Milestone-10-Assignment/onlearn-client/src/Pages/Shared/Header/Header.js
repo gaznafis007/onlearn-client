@@ -40,10 +40,22 @@ const Header = () => {
             </Nav.Item>
           </Nav>
           <Nav>
-            <Nav.Link href="#deets">More deets</Nav.Link>
-            <Nav.Link eventKey={2} href="#memes">
-              Dank memes
-            </Nav.Link>
+            <Nav.Item>
+              <Link
+                className="text-white me-2 text-decoration-none"
+                to="/login"
+              >
+                Login
+              </Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Link
+                className="text-white ms-2 text-decoration-none"
+                to="/signup"
+              >
+                Sign Up
+              </Link>
+            </Nav.Item>
           </Nav>
         </Navbar.Collapse>
       </Container>

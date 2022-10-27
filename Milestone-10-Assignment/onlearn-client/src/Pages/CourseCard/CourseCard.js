@@ -23,9 +23,9 @@ const CourseCard = ({ course }) => {
           <Card.Body>
             <Card.Title>{name}</Card.Title>
             <Card.Text>
-              {course_details.length > 150 ? (
+              {course_details.length > 100 ? (
                 <span>
-                  {course_details.slice(0, 150) + "...."}
+                  {course_details.slice(0, 100) + "...."}
                   <Link to={`/courses/${id}`}>Read more</Link>
                 </span>
               ) : (

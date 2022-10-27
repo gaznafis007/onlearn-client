@@ -14,10 +14,10 @@ const SideNav = () => {
     <div>
       <ListGroup as="ul">
         {categories.map((category) => (
-          <ListGroup.Item key={category.id} as="li">
+          <ListGroup.Item key={category.id} as="li" className="p-4">
             <NavLink
               to={`/courses/categories/${category.name}`}
-              className={"p-4 text-decoration-none capitalize"}
+              className={"text-decoration-none text-capitalize"}
             >
               {({ isActive }) => (
                 <span
