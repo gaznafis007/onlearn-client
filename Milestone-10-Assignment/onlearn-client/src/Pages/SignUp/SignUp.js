@@ -30,24 +30,32 @@ const SignUp = () => {
     const photoURL = form.img.value;
     const email = form.email.value;
     const password = form.password.value;
-    userSignUp(email, password)
-      .then((res) => {
-        const user = res.user;
-        console.log(user);
-        getProfile(displaName, photoURL);
-        verifyEmail();
-        if (user.emailVerified) {
-          logOut();
-          navigate("/");
-        } else {
-          toast.caller(
-            "Please verify your email check email at inbox or spam folder"
-          );
-        }
-      })
-      .catch((error) => {
-        console.log(error.message);
-      });
+    const regex = /^[a-zA-Z0-9]$/;
+    if (password.length < 8) {
+      toast.error("Password must be atleast 8 characters");
+    } else if (!regex.test(password)) {
+      toast.error("password must contain a to z and capital letter and number");
+    } else {
+      userSignUp(email, password)
+        .then((res) => {
+          const user = res.user;
+          console.log(user);
+          getProfile(displaName, photoURL);
+          verifyEmail();
+          if (user.emailVerified) {
+            logOut();
+            navigate("/");
+          } else {
+            toast.error(
+              "Please verify your email check email at inbox or spam folder"
+            );
+            form.reset();
+          }
+        })
+        .catch((error) => {
+          console.log(error.message);
+        });
+    }
   };
   const handleGoogleSignIn = () => {
     googleSignIn(googleProvider)

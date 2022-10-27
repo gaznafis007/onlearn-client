@@ -56,7 +56,7 @@ const AuthProvider = ({ children }) => {
   };
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      if (currentUser.emailVerified) {
+      if ((currentUser = null || currentUser.emailVerified)) {
         setUser(currentUser);
         setLoading(false);
         toast.success("Successfully Login");
