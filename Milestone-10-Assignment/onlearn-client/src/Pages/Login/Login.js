@@ -5,6 +5,7 @@ import { useContext } from "react";
 import { Card, Col, Row } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import toast from "react-hot-toast";
 import { FaFacebook, FaGoogle } from "react-icons/fa";
 import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider";
@@ -27,6 +28,7 @@ const Login = () => {
       .catch((error) => {
         setError(error);
         console.log(error);
+        toast.err(error.message);
       });
   };
   const handleFacebookSignIn = () => {
@@ -38,6 +40,7 @@ const Login = () => {
       })
       .catch((error) => {
         console.log(error.message);
+        toast.err(error.message);
       });
   };
   const handleSignIn = (event) => {
@@ -53,6 +56,7 @@ const Login = () => {
       })
       .catch((error) => {
         console.log(error.message);
+        toast.err(error.message);
       });
   };
   return (

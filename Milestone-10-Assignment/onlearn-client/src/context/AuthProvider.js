@@ -20,6 +20,7 @@ const AuthProvider = ({ children }) => {
   const auth = getAuth(app);
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [dark, setDark] = useState(true);
   const userSignUp = (email, password) => {
     setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
@@ -50,6 +51,8 @@ const AuthProvider = ({ children }) => {
   };
   const value = {
     user,
+    dark,
+    setDark,
     userSignUp,
     userSignIn,
     googleSignIn,

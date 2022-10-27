@@ -54,6 +54,7 @@ const SignUp = () => {
         })
         .catch((error) => {
           console.log(error.message);
+          toast.err(error.message);
         });
     }
   };
@@ -66,6 +67,7 @@ const SignUp = () => {
       })
       .catch((error) => {
         setError(error);
+        toast.err(error.message);
       });
   };
   const handleFacebookSignIn = () => {
@@ -76,6 +78,7 @@ const SignUp = () => {
       })
       .catch((err) => {
         console.log(err.message);
+        toast.err(error.message);
       });
   };
   return (
