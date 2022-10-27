@@ -12,9 +12,29 @@ import { AuthContext } from "../../context/AuthProvider";
 const SignUp = () => {
   const navigate = useNavigate();
   const [error, setError] = useState({});
-  const { googleSignIn, facebookSignIn } = useContext(AuthContext);
+  const { googleSignIn, facebookSignIn, userSignUp, getProfile, logOut } =
+    useContext(AuthContext);
   const googleProvider = new GoogleAuthProvider();
   const facebookProvider = new FacebookAuthProvider();
+  const handleSignUp = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const displaName = form.name.value;
+    const photoURL = form.img.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    userSignUp(email, password)
+      .then((res) => {
+        const user = res.user;
+        console.log(user);
+        getProfile(displaName, photoURL);
+        logOut();
+        navigate("/login");
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
   const handleGoogleSignIn = () => {
     googleSignIn(googleProvider)
       .then((res) => {
@@ -43,14 +63,30 @@ const SignUp = () => {
             <h2 className="py-2 text-center">Signup Here</h2>
           </Card.Title>
           <Card.Body>
-            <Form>
+            <Form onSubmit={handleSignUp}>
               <Form.Group className="mb-3" controlId="formName">
                 <Form.Label>Your Name</Form.Label>
-                <Form.Control type="name" placeholder="Enter your name" />
+                <Form.Control
+                  type="text"
+                  name="name"
+                  placeholder="Enter your name"
+                />
+              </Form.Group>
+              <Form.Group className="mb-3" controlId="formimg">
+                <Form.Label>Image Url</Form.Label>
+                <Form.Control
+                  type="name"
+                  name="img"
+                  placeholder="Enter image url"
+                />
               </Form.Group>
               <Form.Group className="mb-3" controlId="formEmail">
                 <Form.Label>Email address</Form.Label>
-                <Form.Control type="email" placeholder="Enter email" />
+                <Form.Control
+                  type="email"
+                  name="email"
+                  placeholder="Enter email"
+                />
                 <Form.Text className="text-muted">
                   We'll never share your email with anyone else.
                 </Form.Text>
@@ -58,7 +94,11 @@ const SignUp = () => {
 
               <Form.Group className="mb-3" controlId="formPassword">
                 <Form.Label>Password</Form.Label>
-                <Form.Control type="password" placeholder="Password" />
+                <Form.Control
+                  type="password"
+                  name="password"
+                  placeholder="Password"
+                />
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicCheckbox">
                 <Form.Check type="checkbox" label="Terms and conditions " />

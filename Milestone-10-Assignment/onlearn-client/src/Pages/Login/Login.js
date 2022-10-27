@@ -11,7 +11,7 @@ import { AuthContext } from "../../context/AuthProvider";
 
 const Login = () => {
   const [error, setError] = useState({});
-  const { googleSignIn, facebookSignIn } = useContext(AuthContext);
+  const { googleSignIn, facebookSignIn, userSignIn } = useContext(AuthContext);
   const navigate = useNavigate();
   const googleProvider = new GoogleAuthProvider();
   const facebookProvider = new FacebookAuthProvider();
@@ -38,6 +38,21 @@ const Login = () => {
         console.log(error.message);
       });
   };
+  const handleSignIn = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    userSignIn(email, password)
+      .then((res) => {
+        const user = res.user;
+        console.log(user);
+        navigate("/");
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
   return (
     <Row>
       <Col lg="8" md="10" className="mx-auto">
@@ -46,10 +61,14 @@ const Login = () => {
             <h2 className="p-2 text-center">Please Log in</h2>
           </Card.Title>
           <Card.Body>
-            <Form>
+            <Form onSubmit={handleSignIn}>
               <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Email address</Form.Label>
-                <Form.Control type="email" placeholder="Enter email" />
+                <Form.Control
+                  type="email"
+                  name="email"
+                  placeholder="Enter email"
+                />
                 <Form.Text className="text-muted">
                   We'll never share your email with anyone else.
                 </Form.Text>
@@ -57,7 +76,11 @@ const Login = () => {
 
               <Form.Group className="mb-3" controlId="formBasicPassword">
                 <Form.Label>Password</Form.Label>
-                <Form.Control type="password" placeholder="Password" />
+                <Form.Control
+                  type="password"
+                  name="password"
+                  placeholder="Password"
+                />
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicCheckbox">
                 <Form.Text>
