@@ -17,7 +17,7 @@ const CourseCard = ({ course }) => {
   } = course;
   return (
     <>
-      <Col lg="3" className="my-2">
+      <Col lg="3" md="6" className="my-2">
         <Card>
           <Card.Img variant="top" src={course_img} />
           <Card.Body>

@@ -17,9 +17,17 @@ const SideNav = () => {
           <ListGroup.Item key={category.id} as="li">
             <NavLink
               to={`/courses/categories/${category.name}`}
-              className="p-3 text-decoration-none capitalize"
+              className={"p-4 text-decoration-none capitalize"}
             >
-              {category.name}
+              {({ isActive }) => (
+                <span
+                  className={
+                    isActive ? "bg-primary text-white p-2 rounded" : undefined
+                  }
+                >
+                  {category.name}
+                </span>
+              )}
             </NavLink>
           </ListGroup.Item>
         ))}
