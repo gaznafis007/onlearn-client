@@ -6,12 +6,14 @@ import { Card, Col, Row } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { FaFacebook, FaGoogle } from "react-icons/fa";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider";
 
 const Login = () => {
   const [error, setError] = useState({});
   const { googleSignIn, facebookSignIn, userSignIn } = useContext(AuthContext);
+  const location = useLocation();
+  const from = location?.state?.from?.pathname || "/";
   const navigate = useNavigate();
   const googleProvider = new GoogleAuthProvider();
   const facebookProvider = new FacebookAuthProvider();
@@ -20,7 +22,7 @@ const Login = () => {
       .then((res) => {
         const user = res.user;
         console.log(user);
-        navigate("/");
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         setError(error);
@@ -32,7 +34,7 @@ const Login = () => {
       .then((res) => {
         const user = res.user;
         console.log(user);
-        navigate("/");
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         console.log(error.message);
@@ -47,7 +49,7 @@ const Login = () => {
       .then((res) => {
         const user = res.user;
         console.log(user);
-        navigate("/");
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         console.log(error.message);
