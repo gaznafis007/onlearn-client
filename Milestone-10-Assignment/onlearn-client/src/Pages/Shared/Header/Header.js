@@ -23,6 +23,7 @@ const Header = () => {
   };
   return (
     <Navbar
+      className="sticky-top"
       collapseOnSelect
       expand="lg"
       bg={dark ? "dark" : "light"}
