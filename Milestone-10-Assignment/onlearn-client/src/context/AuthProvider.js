@@ -45,6 +45,9 @@ const AuthProvider = ({ children }) => {
       photoURL: imgURL,
     });
   };
+  // const passwordReset = (email) => {
+  //   return sendPasswordResetEmail(email);
+  // };
   const verifyEmail = () => {
     return sendEmailVerification(auth.currentUser);
   };
@@ -62,6 +65,7 @@ const AuthProvider = ({ children }) => {
     googleSignIn,
     facebookSignIn,
     getProfile,
+    // passwordReset,
     verifyEmail,
     logOut,
   };

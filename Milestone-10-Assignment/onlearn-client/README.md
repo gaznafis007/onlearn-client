@@ -1,6 +1,6 @@
 # onLearn Learning App
 
-### acebook,Google,email authentication
+### Facebook,Google,email authentication
 
 ### Single page App
 
@@ -15,7 +15,9 @@
 - This project UI design with React-Bootstrap.
 
 - It has Active Route
+
 - Only verified email User can create profile
+
 - Client site Link: (https://onlearn-client.web.app/)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

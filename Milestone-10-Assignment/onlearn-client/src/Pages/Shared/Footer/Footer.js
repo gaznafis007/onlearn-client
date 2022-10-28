@@ -13,7 +13,7 @@ import { AuthContext } from "../../../context/AuthProvider";
 const Footer = () => {
   const { dark } = useContext(AuthContext);
   return (
-    <div className={dark ? "bg-dark" : "bg-white"}>
+    <div className={`static-bottom ${dark ? "bg-dark" : "bg-light"}`}>
       <Row
         className={`p-4  justify-content-around ${
           dark ? "text-white" : "text-primary"

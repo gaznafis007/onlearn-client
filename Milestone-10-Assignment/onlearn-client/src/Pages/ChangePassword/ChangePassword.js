@@ -5,13 +5,14 @@ import { Form } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider";
 
 const ChangePassword = () => {
-  const { changePassword } = useContext(AuthContext);
+  const { passwordReset } = useContext(AuthContext);
   const handleChangePass = (event) => {
     event.preventDefault();
     const form = event.target;
     const mail = form.email.value;
-    changePassword(mail)
-      .then(() => {
+    passwordReset(mail)
+      .then((res) => {
+        const user = res.user;
         toast("Check Your Email");
       })
       .catch((error) => {

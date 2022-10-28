@@ -93,6 +93,10 @@ const Login = () => {
                 <Form.Text>
                   New to our site? Please <Link to="/signup">Sign up</Link>
                 </Form.Text>
+                {/* <br />
+                <Form.Text>
+                  <Link to="/resetpass">Forget password</Link>
+                </Form.Text> */}
               </Form.Group>
 
               <Button
