@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Main from "../layout/Main/Main";
 import Blog from "../Pages/Blog/Blog";
 import CategoryCourses from "../Pages/CategoryCourse/CategoryCourses";
+import CheckOut from "../Pages/CheckOut/CheckOut";
 import CourseDetails from "../Pages/CourseDetails/CourseDetails";
 import CourseLayout from "../Pages/CourseLayout.js/CourseLayout";
 import Courses from "../Pages/Courses/Courses";
@@ -46,6 +47,16 @@ export const router = createBrowserRouter([
         element: (
           <ProtectedRoute>
             <CourseDetails></CourseDetails>
+          </ProtectedRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`https://onlearn-server.vercel.app/datas/${params.id}`),
+      },
+      {
+        path: "/course/:id/checkout",
+        element: (
+          <ProtectedRoute>
+            <CheckOut />
           </ProtectedRoute>
         ),
         loader: ({ params }) =>

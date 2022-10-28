@@ -23,6 +23,7 @@ const CourseCard = ({ course }) => {
     duration,
     total_enroll,
     mentor,
+    price,
     course_details,
   } = course;
   const handleEnroll = () => {
@@ -37,7 +38,11 @@ const CourseCard = ({ course }) => {
             className={dark ? "bg-dark text-white" : "bg-white text-dark"}
           >
             <Card.Title>{name}</Card.Title>
-            <Card.Text>
+            <Card.Subtitle className="text-primary">
+              <span className="me-2">Mentor: {mentor}</span>
+              <span>Price: {price}$</span>
+            </Card.Subtitle>
+            <Card.Text className="mt-3">
               {course_details.length > 100 ? (
                 <span>
                   {course_details.slice(0, 100) + "...."}

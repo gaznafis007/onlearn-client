@@ -7,10 +7,12 @@ import reactAndNodeAnimattion from "./react-and-node-development-mobile-first.js
 import SideNav from "../Shared/SideNav/SideNav";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthProvider";
+import useTitle from "../../Hooks/useTitle";
 
 const Home = () => {
   const navigate = useNavigate();
   const { dark } = useContext(AuthContext);
+  useTitle("");
   return (
     <>
       <Row

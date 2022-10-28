@@ -2,9 +2,11 @@ import React from "react";
 import { useContext } from "react";
 import { Spinner } from "react-bootstrap";
 import { AuthContext } from "../../context/AuthProvider";
+import useTitle from "../../Hooks/useTitle";
 
 const Blog = () => {
   const { dark, loading } = useContext(AuthContext);
+  useTitle("Blog");
   if (loading) {
     return (
       <div className="mx-auto w-50 text-center">

@@ -1,12 +1,13 @@
 import React from "react";
 import { Card, Spinner } from "react-bootstrap";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { FaBeer, FaPeopleCarry } from "react-icons/fa";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthProvider";
 
 const CourseDetails = () => {
   const { dark, loading } = useContext(AuthContext);
+  const navigate = useNavigate();
   const courseData = useLoaderData();
   const {
     id,
@@ -16,6 +17,7 @@ const CourseDetails = () => {
     duration,
     total_enroll,
     mentor,
+    price,
     course_details,
   } = courseData;
   if (loading) {
@@ -49,7 +51,13 @@ const CourseDetails = () => {
         <Card.Footer className="d-flex justify-content-evenly">
           <p className="fw-semibold">Course Category: {category}</p>
           <p className="fw-semibold">Course Duration: {duration}</p>
-          <button className="btn btn-primary">Enroll now!</button>
+          <p className="fw-semibold">Price: {price}$</p>
+          <button
+            onClick={() => navigate(`/course/${id}/checkout`)}
+            className="btn btn-primary"
+          >
+            Enroll now!
+          </button>
         </Card.Footer>
       </Card>
     </div>
