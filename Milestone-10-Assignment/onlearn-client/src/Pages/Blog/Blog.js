@@ -1,8 +1,11 @@
 import React from "react";
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthProvider";
 
 const Blog = () => {
+  const { dark } = useContext(AuthContext);
   return (
-    <div>
+    <div className={dark ? "bg-dark text-white" : "bg-light text-dark"}>
       <h2>What is Cors?</h2>
       <p>
         Cross-Origin Resource Sharing (CORS) is an HTTP-header based mechanism

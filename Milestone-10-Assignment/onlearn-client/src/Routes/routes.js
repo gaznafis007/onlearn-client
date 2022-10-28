@@ -5,6 +5,7 @@ import CategoryCourses from "../Pages/CategoryCourse/CategoryCourses";
 import CourseDetails from "../Pages/CourseDetails/CourseDetails";
 import CourseLayout from "../Pages/CourseLayout.js/CourseLayout";
 import Courses from "../Pages/Courses/Courses";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import Faq from "../Pages/Faq/Faq";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
@@ -15,6 +16,7 @@ export const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",

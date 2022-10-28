@@ -110,7 +110,11 @@ const Header = () => {
               <>
                 <Nav.Item>
                   <Link
-                    className="text-white me-2 text-decoration-none"
+                    className={
+                      dark
+                        ? "text-white ms-2 text-decoration-none"
+                        : "text-dark ms-2 text-decoration-none"
+                    }
                     to="/login"
                   >
                     Login
@@ -118,7 +122,11 @@ const Header = () => {
                 </Nav.Item>
                 <Nav.Item>
                   <Link
-                    className="text-white ms-2 text-decoration-none"
+                    className={
+                      dark
+                        ? "text-white ms-2 text-decoration-none"
+                        : "text-dark ms-2 text-decoration-none"
+                    }
                     to="/signup"
                   >
                     Sign Up
@@ -132,7 +140,7 @@ const Header = () => {
               className="text-white ms-2"
               style={{ fontSize: "20px" }}
             >
-              {dark ? <FaSun></FaSun> : <FaMoon></FaMoon>}
+              {dark ? <FaSun></FaSun> : <FaMoon className="text-dark"></FaMoon>}
             </Nav.Item>
           </Nav>
         </Navbar.Collapse>
