@@ -12,19 +12,21 @@ const Courses = () => {
   const courses = useLoaderData();
   useTitle("Courses");
   return (
-    <div className={`d-flex ${dark ? "bg-dark" : "bg-transparent"}`}>
-      <div className="w-25 mt-2 px-2">
-        <SideNav></SideNav>
-      </div>
-      <div className="w-75">
+    <Row className={`d-flex ${dark ? "bg-dark" : "bg-transparent"}`}>
+      <Col lg="4" md="6">
+        <div className="mt-2 px-2">
+          <SideNav></SideNav>
+        </div>
+      </Col>
+      <Col lg="8" md="6">
         <Row className="mx-auto">
           {/* {courses.map((course) => (
             <CourseCard key={course.id} course={course}></CourseCard>
           ))} */}
           <Outlet></Outlet>
         </Row>
-      </div>
-    </div>
+      </Col>
+    </Row>
   );
 };
 
