@@ -2,6 +2,7 @@ import React from "react";
 import { useContext } from "react";
 import { Outlet } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider";
+import Footer from "../../Pages/Shared/Footer/Footer";
 import Header from "../../Pages/Shared/Header/Header";
 
 const Main = () => {
@@ -14,6 +15,7 @@ const Main = () => {
           className={dark ? "bg-dark text-white" : "bg-transparent text-dark"}
         ></Outlet>
       </div>
+      <Footer />
     </div>
   );
 };

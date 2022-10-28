@@ -7,11 +7,13 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import toast from "react-hot-toast";
 import { FaFacebook, FaGoogle } from "react-icons/fa";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider";
 
 const SignUp = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = location?.state?.from?.pathname || "/";
   const [error, setError] = useState({});
   const {
     googleSignIn,
@@ -44,7 +46,7 @@ const SignUp = () => {
           verifyEmail();
           if (user.emailVerified) {
             logOut();
-            navigate("/");
+            navigate("/login");
           } else {
             toast.error(
               "Please verify your email check email at inbox or spam folder"
@@ -63,7 +65,7 @@ const SignUp = () => {
       .then((res) => {
         const user = res.user;
         console.log(user);
-        navigate("/");
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         setError(error);
@@ -74,7 +76,7 @@ const SignUp = () => {
     facebookSignIn(facebookProvider)
       .then((res) => {
         const user = res.user;
-        navigate("/");
+        navigate(from, { replace: true });
       })
       .catch((err) => {
         console.log(err.message);

@@ -73,6 +73,9 @@ const AuthProvider = ({ children }) => {
         console.log(currentUser);
         setLoading(false);
         toast.success("Successfully Logged in");
+      } else {
+        setUser("");
+        toast.error("Please verify your email");
       }
     });
     return () => {

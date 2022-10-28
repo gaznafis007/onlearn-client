@@ -10,6 +10,7 @@ import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import Faq from "../Pages/Faq/Faq";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
+import Profile from "../Pages/Profile/Profile";
 import ProtectedRoute from "../Pages/ProtectedRoute/ProtectedRoute";
 import SignUp from "../Pages/SignUp/SignUp";
 
@@ -51,6 +52,14 @@ export const router = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(`https://onlearn-server.vercel.app/datas/${params.id}`),
+      },
+      {
+        path: "/:profileName",
+        element: (
+          <ProtectedRoute>
+            <Profile></Profile>
+          </ProtectedRoute>
+        ),
       },
       {
         path: "/course/:id/checkout",

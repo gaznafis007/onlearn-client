@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -11,6 +11,10 @@ import { FaMoon, FaSun } from "react-icons/fa";
 
 const Header = () => {
   const { user, dark, logOut, setDark } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const handleProfile = () => {
+    navigate(`/${user.displayName}`);
+  };
   const handleLogOut = () => {
     logOut()
       .then(() => {})
@@ -93,6 +97,7 @@ const Header = () => {
                 </Nav.Item>
                 <Nav.Item>
                   <Image
+                    onClick={handleProfile}
                     src={user?.photoURL}
                     className="rounded-circle"
                     style={{ height: "30px" }}

@@ -15,15 +15,11 @@ const Faq = () => {
     >
       <Accordion
         defaultActiveKey={["0"]}
-        className={`mx-2 p-2 ${
-          dark ? "bg-dark text-white" : "bg-transparent text-dark"
-        }`}
+        className={dark ? "bg-dark text-white" : "bg-transparent text-dark"}
       >
         <Accordion.Item
           eventKey="0"
-          className={`mx-2 p-2 ${
-            dark ? "bg-dark text-white" : "bg-transparent text-dark"
-          }`}
+          className={dark ? "bg-dark text-white" : "bg-transparent text-dark"}
         >
           <Accordion.Header>What is JSX?</Accordion.Header>
           <Accordion.Body>
@@ -41,9 +37,7 @@ const Faq = () => {
         </Accordion.Item>
         <Accordion.Item
           eventKey="1"
-          className={`mx-2 p-2 ${
-            dark ? "bg-dark text-white" : "bg-transparent text-dark"
-          }`}
+          className={dark ? "bg-dark text-white" : "bg-transparent text-dark"}
         >
           <Accordion.Header>What is Flutter?</Accordion.Header>
           <Accordion.Body>
@@ -55,9 +49,7 @@ const Faq = () => {
         </Accordion.Item>
         <Accordion.Item
           eventKey="2"
-          className={`mx-2 p-2 ${
-            dark ? "bg-dark text-white" : "bg-transparent text-dark"
-          }`}
+          className={dark ? "bg-dark text-white" : "bg-transparent text-dark"}
         >
           <Accordion.Header>
             What is required to enroll courses?
