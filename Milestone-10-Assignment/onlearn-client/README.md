@@ -18,6 +18,8 @@
 
 - Only verified email User can create profile
 
+- It has a small profile route
+
 - Client site Link: (https://onlearn-client.web.app/)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
