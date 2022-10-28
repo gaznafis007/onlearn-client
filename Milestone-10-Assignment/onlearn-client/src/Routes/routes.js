@@ -53,7 +53,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/blog",
-        element: <Blog></Blog>,
+        element: (
+          <ProtectedRoute>
+            <Blog></Blog>
+          </ProtectedRoute>
+        ),
       },
       {
         path: "/faq",

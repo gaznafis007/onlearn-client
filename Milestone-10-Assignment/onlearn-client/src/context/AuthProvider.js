@@ -52,6 +52,7 @@ const AuthProvider = ({ children }) => {
   const value = {
     user,
     dark,
+    loading,
     setDark,
     userSignUp,
     userSignIn,
@@ -71,7 +72,7 @@ const AuthProvider = ({ children }) => {
         setUser(currentUser);
         console.log(currentUser);
         setLoading(false);
-        toast.success("Successfully Login");
+        toast.success("Successfully Logged in");
       }
     });
     return () => {

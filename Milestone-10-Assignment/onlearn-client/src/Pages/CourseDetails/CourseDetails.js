@@ -1,12 +1,12 @@
 import React from "react";
-import { Card } from "react-bootstrap";
+import { Card, Spinner } from "react-bootstrap";
 import { useLoaderData } from "react-router-dom";
 import { FaBeer, FaPeopleCarry } from "react-icons/fa";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthProvider";
 
 const CourseDetails = () => {
-  const { dark } = useContext(AuthContext);
+  const { dark, loading } = useContext(AuthContext);
   const courseData = useLoaderData();
   const {
     id,
@@ -18,6 +18,18 @@ const CourseDetails = () => {
     mentor,
     course_details,
   } = courseData;
+  if (loading) {
+    return (
+      <div className="mx-auto w-50 text-center">
+        <Spinner animation="grow" variant="primary" />
+        <Spinner animation="grow" variant="secondary" />
+        <Spinner animation="grow" variant="success" />
+        <Spinner animation="grow" variant="danger" />
+        <Spinner animation="grow" variant="warning" />
+        <Spinner animation="grow" variant="info" />
+      </div>
+    );
+  }
   return (
     <div className="mx-auto w-75">
       <Card

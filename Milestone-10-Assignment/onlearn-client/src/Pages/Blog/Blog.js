@@ -1,11 +1,26 @@
 import React from "react";
 import { useContext } from "react";
+import { Spinner } from "react-bootstrap";
 import { AuthContext } from "../../context/AuthProvider";
 
 const Blog = () => {
-  const { dark } = useContext(AuthContext);
+  const { dark, loading } = useContext(AuthContext);
+  if (loading) {
+    return (
+      <div className="mx-auto w-50 text-center">
+        <Spinner animation="grow" variant="primary" />
+        <Spinner animation="grow" variant="secondary" />
+        <Spinner animation="grow" variant="success" />
+        <Spinner animation="grow" variant="danger" />
+        <Spinner animation="grow" variant="warning" />
+        <Spinner animation="grow" variant="info" />
+      </div>
+    );
+  }
   return (
-    <div className={dark ? "bg-dark text-white" : "bg-light text-dark"}>
+    <div
+      className={`p-4 ${dark ? "bg-dark text-white" : "bg-light text-dark"}`}
+    >
       <h2>What is Cors?</h2>
       <p>
         Cross-Origin Resource Sharing (CORS) is an HTTP-header based mechanism
