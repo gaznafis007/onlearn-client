@@ -83,6 +83,10 @@ const SignUp = () => {
         toast.err(error.message);
       });
   };
+  const [agree, setAgree] = useState(false);
+  const handleAgree = () => {
+    setAgree(!agree);
+  };
   return (
     <Row>
       <Col lg="8" md="10" className="mx-auto">
@@ -129,7 +133,11 @@ const SignUp = () => {
                 />
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                <Form.Check type="checkbox" label="Terms and conditions " />
+                <Form.Check
+                  onClick={handleAgree}
+                  type="checkbox"
+                  label="Terms and conditions "
+                />
               </Form.Group>
               <Form.Group>
                 <Form.Text>
@@ -141,6 +149,7 @@ const SignUp = () => {
                 size="md"
                 className="btn d-block text-center mx-auto"
                 type="submit"
+                disabled={!agree}
               >
                 Sign up
               </Button>
