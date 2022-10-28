@@ -29,7 +29,7 @@ const Login = () => {
       .catch((error) => {
         setError(error);
         console.log(error);
-        toast.err(error.message);
+        toast.error(error.message);
       });
   };
   const handleFacebookSignIn = () => {
@@ -41,7 +41,7 @@ const Login = () => {
       })
       .catch((error) => {
         console.log(error.message);
-        toast.err(error.message);
+        toast.error(error.message);
       });
   };
   const handleSignIn = (event) => {
@@ -57,7 +57,7 @@ const Login = () => {
       })
       .catch((error) => {
         console.log(error.message);
-        toast.err(error.message);
+        toast.error(error.message);
       });
   };
   return (
