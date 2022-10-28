@@ -2,8 +2,11 @@ import React from "react";
 import { Card } from "react-bootstrap";
 import { useLoaderData } from "react-router-dom";
 import { FaBeer, FaPeopleCarry } from "react-icons/fa";
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthProvider";
 
 const CourseDetails = () => {
+  const { dark } = useContext(AuthContext);
   const courseData = useLoaderData();
   const {
     id,
@@ -17,7 +20,9 @@ const CourseDetails = () => {
   } = courseData;
   return (
     <div className="mx-auto w-75">
-      <Card>
+      <Card
+        className={dark ? "bg-dark text-white" : "bg-transparent text-dark"}
+      >
         <Card.Img variant="top" src={course_img} />
         <Card.Title className="ms-2 mt-4">{name}</Card.Title>
         <Card.Subtitle className="ps-2 w-100 d-flex">

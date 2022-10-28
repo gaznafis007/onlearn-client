@@ -12,7 +12,8 @@ import { AuthContext } from "../../context/AuthProvider";
 
 const Login = () => {
   const [error, setError] = useState({});
-  const { googleSignIn, facebookSignIn, userSignIn } = useContext(AuthContext);
+  const { googleSignIn, facebookSignIn, userSignIn, dark } =
+    useContext(AuthContext);
   const location = useLocation();
   const from = location?.state?.from?.pathname || "/";
   const navigate = useNavigate();

@@ -6,8 +6,11 @@ import { Link, useNavigate } from "react-router-dom";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
 import Aos from "aos";
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthProvider";
 
 const CourseCard = ({ course }) => {
+  const { dark } = useContext(AuthContext);
   useEffect(() => {
     Aos.init();
   }, []);
@@ -30,7 +33,9 @@ const CourseCard = ({ course }) => {
       <Col lg="3" md="6" className="my-2">
         <Card data-aos="zoom-in" data-aos-duration="1500">
           <Card.Img variant="top" src={course_img} />
-          <Card.Body>
+          <Card.Body
+            className={dark ? "bg-dark text-white" : "bg-white text-dark"}
+          >
             <Card.Title>{name}</Card.Title>
             <Card.Text>
               {course_details.length > 100 ? (

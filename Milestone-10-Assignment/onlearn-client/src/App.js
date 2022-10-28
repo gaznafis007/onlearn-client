@@ -9,7 +9,7 @@ import { AuthContext } from "./context/AuthProvider";
 function App() {
   const { dark } = useContext(AuthContext);
   return (
-    <div className={dark ? "bg-dark text-white" : "bg-transparent text-dark"}>
+    <div>
       <RouterProvider router={router}></RouterProvider>
       <Toaster />
     </div>
