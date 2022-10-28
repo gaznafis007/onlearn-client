@@ -5,6 +5,7 @@ import Card from "react-bootstrap/Card";
 import toast from "react-hot-toast";
 import { useLoaderData } from "react-router-dom";
 import useTitle from "../../Hooks/useTitle";
+import ReactToPdf from "react-to-pdf";
 
 const CheckOut = () => {
   useTitle("Checkout");

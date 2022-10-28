@@ -1,7 +1,7 @@
 import React from "react";
 import { Card, Spinner } from "react-bootstrap";
 import { useLoaderData, useNavigate } from "react-router-dom";
-import { FaBeer, FaPeopleCarry } from "react-icons/fa";
+import { FaPeopleCarry } from "react-icons/fa";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthProvider";
 

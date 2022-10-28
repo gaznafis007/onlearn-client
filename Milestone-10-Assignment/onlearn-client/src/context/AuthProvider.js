@@ -5,9 +5,11 @@ import {
   getAuth,
   onAuthStateChanged,
   sendEmailVerification,
+  sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
+  updatePassword,
   updateProfile,
 } from "firebase/auth";
 import { app } from "../Firebase/firebase.config";
@@ -46,6 +48,7 @@ const AuthProvider = ({ children }) => {
   const verifyEmail = () => {
     return sendEmailVerification(auth.currentUser);
   };
+
   const logOut = () => {
     return signOut(auth);
   };

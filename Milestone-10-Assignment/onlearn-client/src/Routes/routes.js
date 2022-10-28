@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Main from "../layout/Main/Main";
 import Blog from "../Pages/Blog/Blog";
 import CategoryCourses from "../Pages/CategoryCourse/CategoryCourses";
+import ChangePassword from "../Pages/ChangePassword/ChangePassword";
 import CheckOut from "../Pages/CheckOut/CheckOut";
 import CourseDetails from "../Pages/CourseDetails/CourseDetails";
 import CourseLayout from "../Pages/CourseLayout.js/CourseLayout";
@@ -91,6 +92,10 @@ export const router = createBrowserRouter([
         path: "/login",
         element: <Login></Login>,
       },
+      // {
+      //   path: "/resetpass",
+      //   element: <ChangePassword></ChangePassword>,
+      // },
     ],
   },
 ]);
