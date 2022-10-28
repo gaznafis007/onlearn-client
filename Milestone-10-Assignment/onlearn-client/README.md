@@ -1,17 +1,22 @@
 # onLearn Learning App
 
-**Facebook,Google,email authentication**
-**Single page App**
+### acebook,Google,email authentication
+
+### Single page App
+
 \*\*Deploy at firebase withe a vercel server
 
 # Feature of this app
 
-**This project is a learning Platform**
-**It has Firebase Authentication**
-**This project UI design with React-Bootstrap.**
-**It has Active Route**
-**Only verified email User can create profile**
-Client site Link: (https://onlearn-client.web.app/)
+- This project is a learning Platform
+
+- It has Firebase Authentication
+
+- This project UI design with React-Bootstrap.
+
+- It has Active Route
+- Only verified email User can create profile
+- Client site Link: (https://onlearn-client.web.app/)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
